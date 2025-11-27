@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:finwise/commons/routes/app_pages.dart';
 import 'package:finwise/commons/routes/app_routes.dart';
 import 'package:finwise/commons/themes/app_themes.dart';
@@ -32,6 +34,8 @@ class FinWiseApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       getPages: AppPages.pages,
       initialRoute: AppRoutes.splash,
+      defaultTransition: Platform.isAndroid ? Transition.rightToLeftWithFade : Transition.cupertino,
+      transitionDuration: Platform.isAndroid ? const Duration(milliseconds: 200) : null,
       theme: AppThemes.getLightTheme(),
     );
   }
