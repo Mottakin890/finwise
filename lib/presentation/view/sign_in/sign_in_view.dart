@@ -1,5 +1,6 @@
 import 'package:finwise/commons/app_assets/app_assets.dart';
 import 'package:finwise/commons/dimentions/app_spacings.dart';
+import 'package:finwise/commons/routes/app_routes.dart';
 import 'package:finwise/commons/themes/app_colors.dart';
 import 'package:finwise/commons/widgets/global_scaffold.dart';
 import 'package:finwise/commons/widgets/input_field.dart';
@@ -7,6 +8,7 @@ import 'package:finwise/presentation/view/auth_page/helper/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -22,14 +24,13 @@ class _SignInViewState extends State<SignInView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus,
       child: GlobalScaffold(
         isScrollable: false,
         expandedHeight: 180.h,
         centerTitle: true,
         title: 'Welcome',
         child: SingleChildScrollView(
-          
           child: Column(
             crossAxisAlignment: .start,
             children: [
@@ -82,14 +83,14 @@ class _SignInViewState extends State<SignInView> {
                   text: 'Log In',
                 ),
               ),
-              AppSpacings.vertical(60),
+              AppSpacings.vertical(30),
               Center(
                 child: Text(
                   'or continue with',
                   style: TextStyle(fontSize: 13.sp, fontWeight: .w300),
                 ),
               ),
-              AppSpacings.vertical(30),
+              AppSpacings.vertical(15),
               Center(
                 child: SizedBox(
                   width: 100.w,
@@ -105,6 +106,34 @@ class _SignInViewState extends State<SignInView> {
                         child: SvgPicture.asset(AppAssets.googleLogo),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              AppSpacings.vertical(60),
+              Align(
+                alignment: .bottomCenter,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.signUpPage);
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: AppColors.primaryTextColor,
+                        fontWeight: .w300,
+                        fontSize: 13.sp,
+                      ),
+                      text: "Don't have any account? ",
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Sign Up',
+                          style: TextStyle(
+                            fontWeight: .bold,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
