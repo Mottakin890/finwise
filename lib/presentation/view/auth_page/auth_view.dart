@@ -50,7 +50,7 @@ class AuthView extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                Get.offAllNamed(AppRoutes.signInPage);
+                Get.toNamed(AppRoutes.signInPage);
               },
               child: AuthButton(
                 buttonColor: AppColors.primaryColor,
@@ -58,7 +58,15 @@ class AuthView extends StatelessWidget {
               ),
             ),
             AppSpacings.vertical(10),
-            AuthButton(buttonColor: AppColors.lightGreen, text: 'Sign Up'),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.signUpPage);
+              },
+              child: AuthButton(
+                buttonColor: AppColors.lightGreen,
+                text: 'Sign Up',
+              ),
+            ),
           ],
         ),
       ),
