@@ -1,10 +1,12 @@
 import 'package:finwise/commons/app_assets/app_assets.dart';
 import 'package:finwise/commons/dimentions/app_spacings.dart';
+import 'package:finwise/commons/routes/app_routes.dart';
 import 'package:finwise/commons/themes/app_colors.dart';
 import 'package:finwise/presentation/view/auth_page/helper/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class AuthView extends StatelessWidget {
   const AuthView({super.key});
@@ -12,6 +14,7 @@ class AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.lightBgColor,
       body: Center(
         child: Column(
           mainAxisAlignment: .center,
@@ -45,7 +48,15 @@ class AuthView extends StatelessWidget {
             ),
             AppSpacings.vertical(30),
 
-            AuthButton(buttonColor: AppColors.primaryColor, text: 'Log In'),
+            GestureDetector(
+              onTap: () {
+                Get.offAllNamed(AppRoutes.signInPage);
+              },
+              child: AuthButton(
+                buttonColor: AppColors.primaryColor,
+                text: 'Log In',
+              ),
+            ),
             AppSpacings.vertical(10),
             AuthButton(buttonColor: AppColors.lightGreen, text: 'Sign Up'),
           ],
